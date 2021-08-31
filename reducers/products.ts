@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import Product from '../models/product'
+import { Product } from '../models/product'
 import { PRODUCTS } from '../data/dummy-data'
 type ProductsState = {
   availableProducts: Product[]

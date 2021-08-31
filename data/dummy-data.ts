@@ -1,7 +1,7 @@
 import Product from '../models/product'
 
 const PRODUCTS = [
-  new Product(
+  Product(
     'p1',
     'u1',
     'Red Shirt',
@@ -9,7 +9,7 @@ const PRODUCTS = [
     'A red t-shirt, perfect for days with non-red weather.',
     29.99
   ),
-  new Product(
+  Product(
     'p2',
     'u1',
     'Blue Carpet',
@@ -17,7 +17,7 @@ const PRODUCTS = [
     'Fits your red shirt perfectly. To stand on. Not to wear it.',
     99.99
   ),
-  new Product(
+  Product(
     'p3',
     'u2',
     'Coffee Mug',
@@ -25,7 +25,7 @@ const PRODUCTS = [
     'Can also be used for tea!',
     8.99
   ),
-  new Product(
+  Product(
     'p4',
     'u3',
     'The Book - Limited Edition',
@@ -33,15 +33,15 @@ const PRODUCTS = [
     "What the content is? Why would that matter? It's a limited edition!",
     15.99
   ),
-  new Product(
+  Product(
     'p5',
     'u3',
     'PowerBook',
     'https://get.pxhere.com/photo/laptop-computer-macbook-mac-screen-water-board-keyboard-technology-air-mouse-photo-airport-aircraft-tablet-aviation-office-black-monitor-keys-graphic-hardware-image-pc-exhibition-multimedia-calculator-vector-water-cooling-floppy-disk-phased-out-desktop-computer-netbook-personal-computer-computer-monitor-electronic-device-computer-hardware-display-device-448748.jpg',
-    'Awesome hardware, crappy keyboard and a hefty price. Buy now before a new one is released!',
+    'Awesome hardware, crappy keyboard and a hefty price. Buy now before a one is released!',
     2299.99
   ),
-  new Product(
+  Product(
     'p6',
     'u1',
     'Pen & Paper',

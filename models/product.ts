@@ -1,10 +1,24 @@
-export default class Product {
-  constructor(
-    public id: string,
-    public ownerId: string,
-    public title: string,
-    public imageUrl: string,
-    public description: string,
-    public price: number
-  ) {}
+export default (
+  id: string,
+  ownerId: string,
+  title: string,
+  imageUrl: string,
+  description: string,
+  price: number
+) => ({
+  id,
+  ownerId,
+  title,
+  imageUrl,
+  description,
+  price,
+})
+
+export type Product = {
+  id: string
+  ownerId: string
+  title: string
+  imageUrl: string
+  description: string
+  price: number
 }

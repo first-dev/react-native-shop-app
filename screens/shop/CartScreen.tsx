@@ -1,20 +1,24 @@
-import React, { FC } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import { View, StyleSheet } from 'react-native'
+import { NavigationStackScreenComponent } from 'react-navigation-stack'
+import ProductsList from '../../components/ProductsList'
+import { PRODUCTS } from '../../data/dummy-data'
+import { useAppSelector } from '../../hooks/redux'
 
-type CartScreenProps = {}
+type CartScreenParams = {}
 
-const CartScreen: FC<CartScreenProps> = props => {
+const CartScreen: NavigationStackScreenComponent<CartScreenParams> = ({
+  navigation,
+}) => {
+  const cart = useAppSelector(state => state.cart)
+  const products = PRODUCTS.filter(p => cart.ids.includes(p.id))
   return (
-    <View style={styles.screen}>
-      <Text>CartScreen</Text>
-    </View>
+    <ProductsList products={products} navigation={navigation} action="remove" />
   )
 }
 export default CartScreen
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 })

@@ -1,19 +1,51 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { enableScreens } from 'react-native-screens'
+import { Provider as ReduxProvider } from 'react-redux'
+import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper'
+import { MaterialIcons } from '@expo/vector-icons'
+import * as Font from 'expo-font'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  )
+import ShopNavigator from './navigation/ShopNavigator'
+import store from './store/index'
+import Colors from './constants/Colors'
+import AppLoading from 'expo-app-loading'
+
+enableScreens()
+const loadFonts = () =>
+  Font.loadAsync({
+    OpenSansRegular: require('./assets/fonts/OpenSans-Regular.ttf'),
+    OpenSansBold: require('./assets/fonts/OpenSans-Bold.ttf'),
+  })
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: Colors.primary,
+    accent: Colors.accent,
+  },
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
+export default function App() {
+  const [areAssetsLoaded, setAreAssetsLoaded] = useState(false)
+  if (!areAssetsLoaded) {
+    return (
+      <AppLoading
+        startAsync={loadFonts}
+        onFinish={() => setAreAssetsLoaded(true)}
+        onError={err => console.log(err)}
+      />
+    )
+  }
+  return (
+    <PaperProvider
+      theme={theme}
+      settings={{
+        icon: props => <MaterialIcons {...props} name={props.name as any} />,
+      }}>
+      <ReduxProvider store={store}>
+        <ShopNavigator />
+      </ReduxProvider>
+    </PaperProvider>
+  )
+}
